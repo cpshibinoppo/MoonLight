@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('admin.login');
+    return 'not found';
+});
+Route::prefix('admin')->group(function(){
+Route::get('',[AdminController::class,'index']);
+Route::post('/login',[AdminController::class,'store'])->name('admin.login');
+Route::post('/logout',[AdminController::class,'destroy'])->name('admin.logout');
+Route::get('/dashboard', [AdminController::class,'show'])->name('admin.dashboard');
 });
