@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\StaffController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +21,7 @@ Route::get('/', function () {
 Route::prefix('admin')->group(function(){
 Route::get('',[AdminController::class,'index']);
 Route::post('/login',[AdminController::class,'store'])->name('admin.login');
-Route::post('/logout',[AdminController::class,'destroy'])->name('admin.logout');
+Route::get('/logout',[AdminController::class,'destroy'])->name('admin.logout');
 Route::get('/dashboard', [AdminController::class,'show'])->name('admin.dashboard');
+Route::get('/dashboard/staff',[StaffController::class,'index'])->name('admin.staff');
 });

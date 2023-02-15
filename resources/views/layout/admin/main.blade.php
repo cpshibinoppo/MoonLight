@@ -11,6 +11,10 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     @vite(['resources/sass/app.scss'])
     @vite(['resources/css/layout/admin/main.css'])
+    @auth('admin')
+    @vite(['resources/css/admin/navbar.scss'])
+    @endauth
+
     @stack('style')
     <title>MoonLight</title>
 </head>
@@ -19,7 +23,13 @@
     <div class="main-wrap">
         @yield('main')
     </div>
+    @auth('admin')
+        @include('layout.admin.navbar')
+    @endauth
     @stack('script')
+    @auth('admin')
+    @vite(['resources/js/nav.js'])
+    @endauth
 </body>
 
 </html>

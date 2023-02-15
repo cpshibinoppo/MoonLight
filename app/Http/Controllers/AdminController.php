@@ -68,7 +68,11 @@ class AdminController extends Controller
      */
     public function show(Admin $admin)
     {
+        if(Auth::guard('admin')->check()){
         return view('admin.dashboard');
+        }else{
+            return redirect('/admin');
+        }
     }
 
     /**
